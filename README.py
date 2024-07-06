@@ -49,13 +49,13 @@
 # 
 # 4. **Verifique se o Wireshark está instalado:** Antes de mais nada, confirme se o `Wireshark` foi realmente instalado. Você pode verificar isso executando: `wireshark --version`
 # `
-#     Se o Wireshark estiver instalado, esse comando retornará a versão instalada.
+#     Se o `Wireshark` estiver instalado, esse comando retornará a versão instalada.
 # 
-# 5. **Crie o grupo Wireshark:** Se o Wireshark está instalado mas o grupo não existe, você pode criá-lo manualmente. Para isso, use o seguinte comando: `sudo groupadd wireshark`
+# 5. **Crie o grupo `Wireshark`:** Se o `Wireshark` está instalado mas o grupo não existe, você pode criá-lo manualmente. Para isso, use o seguinte comando: `sudo groupadd wireshark`
 # `
-# 6. **Adicione o usuário ao grupo Wireshark:** Agora que o grupo existe, você pode adicionar seu usuário a ele com o comando que você tentou anteriormente: `sudo usermod -a -G wireshark edenedfsls`
+# 6. **Adicione o usuário ao grupo `Wireshark`:** Agora que o grupo existe, você pode adicionar seu usuário a ele com o comando que você tentou anteriormente: `sudo usermod -a -G wireshark edenedfsls`
 # 
-# 7. **Defina as permissões adequadas:** Para que os usuários do grupo `wireshark` possam capturar pacotes, é necessário ajustar as permissões do `dumpcap`, um componente do Wireshark. Execute os seguintes comandos:
+# 7. **Defina as permissões adequadas:** Para que os usuários do grupo `wireshark` possam capturar pacotes, é necessário ajustar as permissões do `dumpcap`, um componente do `Wireshark`. Execute os seguintes comandos:
 #     
 #     ```
 #     sudo chgrp wireshark /usr/bin/dumpcap
@@ -63,9 +63,9 @@
 #     sudo setcap 'CAP_NET_RAW+eip CAP_NET_ADMIN+eip' /usr/bin/dumpcap
 #     ```
 # 
-# 8. **Reinicie a sessão:** Após adicionar o usuário ao grupo `wireshark`, é necessário reiniciar a sessão (ou reiniciar o computador) para que as alterações entrem em vigor.
+# 8. **Reinicie a sessão:** Após adicionar o usuário ao grupo `wireshark`, é necessário reiniciar a sessão (ou reiniciar o computador) para que as alterações entrem em vigor: `sudo systemclt reboot`
 # 
-# Essas etapas devem resolver o problema com a criação do grupo `wireshark` e permitir que você use o Wireshark para captura de pacotes sem precisar de privilégios de superusuário.
+# Essas etapas devem resolver o problema com a criação do grupo `wireshark` e permitir que você use o `Wireshark` para captura de pacotes sem precisar de privilégios de superusuário.
 
 # ### 1.1 Código completo para configurar/instalar/usar
 # 
@@ -76,7 +76,21 @@
 # 2. Digite o seguinte comando e pressione `Enter`:
 # 
 #     ```
-#     NÃO há.
+#     sudo apt clean
+#     sudo apt autoclean
+#     sudo apt autoremove -y
+#     sudo apt update
+#     sudo apt --fix-broken install
+#     sudo apt clean
+#     sudo apt list --upgradable
+#     sudo apt full-upgrade -y
+#     sudo apt install wireshark -y
+#     wireshark --version
+#     sudo groupadd wireshark
+#     sudo chgrp wireshark /usr/bin/dumpcap
+#     sudo chmod 750 /usr/bin/dumpcap
+#     sudo setcap 'CAP_NET_RAW+eip CAP_NET_ADMIN+eip' /usr/bin/dumpcap
+#     # Reiniciar o computador
 #     ```
 # 
 
